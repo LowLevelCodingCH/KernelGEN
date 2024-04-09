@@ -1,0 +1,15 @@
+#!/bin/python3
+try:
+    str; i: str = str(input("Kernel directory: "))
+    import os
+
+    os.chdir(i)
+    os.system("make menuconfig -j7")
+    os.system("make -j7")
+    os.system("sudo make modules_install -j7")
+    k = input("Clear screen (Y/n)")
+    if k.upper() == "Y":
+        os.system("clear")
+        print("Kernel should be in 'arch/x86/boot/bzImage'")
+except:
+    pass
